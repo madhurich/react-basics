@@ -1,0 +1,29 @@
+REFER "https://www.youtube.com/watch?v=uextYhQGP6k&index=2&list=PL55RiY5tL51oyA8euSROLjMFZbXaV7skS"
+
+>In order to set up react project, we need "webpack"
+Web pack is a tool that is used to bundle all the js files
+that are used in our project folder.
+We write the code in es2015 (called as es6), this must
+be converted to es5 as most browsers doesn't support es6.
+So webpack deals all with these. We install modules into this webpack
+that are responsible for transpilation(convertion) of es6 to es5.
+
+babel is the plugin that is put into this webpack which is responsible for
+transpilation of code.
+
+COMMANDS TO SETUP
+1. npm init
+2.npm install react react-dom --save
+  						>if we don't use "--save-dev" in a command
+  						and use only "--save" those will be saved in dependencies
+  						array in package.json and they are "production(run)" dependencies
+3. npm install webpack webpack-dev-server babel-loader babel-preset-es2015 babel-preset-react --save-dev
+						>and these are used in "development(build)" to develop the app  
+
+use   "scripts": {
+    "start": "npm run build",
+    "build": "webpack -d & copy \"src/index.html\" \"dist/index.html\" /Y & webpack-dev-server --content-base src/ --inline --hot",
+    "build:prod": "webpack -p & copy \"src/index.html\" \"dist/index.html\" /Y"
+  },﻿
+ instead of code given in the video. This worked.
+ also replace "hot" with watch if you don't want to see WDS hot module etc etc in the console. 												 
