@@ -1,3 +1,33 @@
+							******IMPORTANT******
+Before you write any code in react, first make your environment setup to write react
+program.
+
+1. Set syntax highlighting, install package "babel" for react.
+2.choose syntax as javascript-babel from the bottom right corner of your file
+			(or) goto View--> syntax--> Babel--> Javascript(Babel)
+3. you can also set this "javascript(babel)" as the default syntax for your
+.js or .jsx files. To do this 
+View--> syntax--> open all with current extn as--> Babel--> Javascript(Babel).
+
+4. If you get a "yellow colored dot" when you use import statement
+and if it says warning as (at the bottom of the file), "import is only
+available with ES6 etc etc" --to avoid this we have two ways
+				i. We can include a comment as 
+							/*jshint esversion: 6 */ at the top of each file
+							to tell the editor that, that particular file has es6
+							syntax and allow it to use whatever the es6 syntax you use
+							Ex: using "import statements".
+				ii. We can also include a file named ".jshintrc" (remove the double
+				quotes while naming the file) with content as 
+							{"esversion" : 6} or {"esnext": true} in your project root
+							folder. The first statement is the latest one to use than
+							{"esnext": true} but in your case it both worked just as well.
+				--REFER "http://stackoverflow.com/questions/27441803/why-does-jshint-throw-a-warning-if-i-am-using-const"	
+				"https://www.sitepoint.com/essential-sublime-text-javascript-plugins/"		  									
+
+
+
+
 REFER "https://www.youtube.com/watch?v=uextYhQGP6k&index=2&list=PL55RiY5tL51oyA8euSROLjMFZbXaV7skS"
 
 >In order to set up react project, we need "webpack"
@@ -26,4 +56,55 @@ use   "scripts": {
     "build:prod": "webpack -p & copy \"src/index.html\" \"dist/index.html\" /Y"
   },﻿
  instead of code given in the video. This worked.
- also replace "hot" with watch if you don't want to see WDS hot module etc etc in the console. 												 
+ also replace "hot" with watch if you don't want to see WDS hot module etc etc in the console. 
+
+ ---------------------
+ React Routing
+
+ 1. In order to set up routing to develop single page applications in React
+ first we need to install the reac-router into our project folder or globally
+ we can do that by running
+ 					npm install --save react-router
+ now you can see that react-router has been added to the dependencies in your
+ package.json file.	
+
+ 2.Next inorder to use that router we need to mention that in our root file which is
+ "index.js" file by importing "Router" from "react-router"--look into line 3 in index.js file
+ 			Router--> is imported to use routing in app
+ 			Route--> is imported to route to a specific path in the app
+ 			browserHistory--> is to tell the browser that we are sing urls which don't have
+ 							hashes ("#") and we want to use urls just with slashes("/").
+ 							for this we also need to include property called 
+ 							history={browserHistory} while rendering in our index.js--look 
+ 							line 13 "<Router history={browserHistory}>"
+ 							ALSO we need to mention "--history-api-fallback" in package.json
+ 							in the build property, to tell the browser that look inside of the app
+ 							and don't request a new request to the server.
+ 							REFER "https://www.youtube.com/watch?v=5pt_igBTCsI&list=PL55RiY5tL51oyA8euSROLjMFZbXaV7skS&index=17"
+ 			IndexRoute--> is used to tell the browser that we need a default route to
+ 							be rendered when we go to https://localhost:8080/ 
+ 							in our case the Home component is the default component to
+ 							be loaded --- <IndexRoute component={Home}/>
+
+3. To set up the links, we imported "link" from the react-router
+look line 2 in Header.js import {Link} from "react-router";
+
+In order to display the "ids" that are passed to the url
+we used "params" here. In the user compoenent in file User.js
+look into line 12 User Id: {this.props.params.id}<br/> where we used params.id
+to display that on page.
+  REMEMBER the "id" mentioned here and the "id" in the index.js <Route path={"user/:id"} component={User}/> must be same variables,
+  				Ex: if in index.js we used 
+  								<Route path={"user/:one"} component={User}/>
+  									then in User.js in user component
+  								we need to write it as
+  									 User Id: {this.props.params.one}<br/>	
+ We can also use browserHistory to navigate to different pages
+ look into line 15 "<button onClick={this.goToHome}>Go Home!</button>"
+ in User.js, where we defined a funciton called goHome(), when ever this button
+ is clicked, the browserHistory will push "/home" to the top level and goes to that
+ url.
+ 	REFER "https://www.youtube.com/watch?v=5pt_igBTCsI&list=PL55RiY5tL51oyA8euSROLjMFZbXaV7skS&index=17"
+
+ 	To learn more about routes 
+ 			REFER "https://github.com/reactjs/react-router-tutorial/tree/master/lessons" 									 																					 
