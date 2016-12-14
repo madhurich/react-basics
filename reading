@@ -23,7 +23,12 @@ available with ES6 etc etc" --to avoid this we have two ways
 							folder. The first statement is the latest one to use than
 							{"esnext": true} but in your case it both worked just as well.
 				--REFER "http://stackoverflow.com/questions/27441803/why-does-jshint-throw-a-warning-if-i-am-using-const"	
-				"https://www.sitepoint.com/essential-sublime-text-javascript-plugins/"		  									
+				"https://www.sitepoint.com/essential-sublime-text-javascript-plugins/"	
+5. For react we have "React Developer Tools" which is different from
+chrome developer tools use that inorder to debug the app that you have built. To get react dev tools goto
+			"https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi"
+			and add that to your chrome browser, now in the inspect
+			tab when you click, select "react" to debug the app.					  									
 
 
 
